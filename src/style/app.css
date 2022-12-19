@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 85%;
+  margin: auto;
+}
+
+.main-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-input input {
+  background-color: #eeeeee;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  width: 300px;
+  font-family: "Roboto", sans-serif;
+}
+
+.todo-btn {
+  padding: 10px 20px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+.todo-list {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status {
+  background: #000;
+  color: #ccc;
+  border-radius: 5px;
+  width: 375px;
+  margin: auto;
+}
+
+.todo-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 5px 15px;
+}
+
+.todo-remove {
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+.todo-info {
+  display: flex;
+  gap: 10px;
+}
+
+.todo-list-check {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #222222;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.todo-list-check:checked {
+  background-color: #000;
+}
