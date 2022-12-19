@@ -9,6 +9,9 @@ export const todoReducers = (state, action) => {
         complete: false,
       });
 
+    case "REMOVE_TODO":
+      return state.filter((item) => item.id !== action.id);
+
     default:
       return state;
   }

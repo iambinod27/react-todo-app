@@ -20,7 +20,14 @@ export const TodoProvider = ({ children }) => {
     setTodo("");
   };
 
-  const value = { state, handleSubmit, todo, setTodo };
+  const removeTodo = (id) => {
+    dispatch({
+      type: "REMOVE_TODO",
+      id,
+    });
+  };
+
+  const value = { state, handleSubmit, todo, setTodo, removeTodo };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };
