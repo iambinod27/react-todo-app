@@ -1,7 +1,26 @@
-import { createContext } from "react";
+import { createContext, useReducer, useState } from "react";
+import { initialState, todoReducers } from "./reducer/todoReducer";
+import { v4 as uuid } from "uuid";
 
 export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  return <TodoContext.Provider>{children}</TodoContext.Provider>;
+  const [state, dispatch] = useReducer(todoReducers, initialState);
+  const [todo, setTodo] = useState("");
+
+  const handleSubmit = (e) => {
+    if (todo) {
+      dispatch({
+        type: "ADD_TODO",
+        task: todo,
+        id: uuid(),
+      });
+    }
+    e.preventDefault();
+    setTodo("");
+  };
+
+  const value = { state, handleSubmit, todo, setTodo };
+
+  return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };
