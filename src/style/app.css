@@ -96,3 +96,11 @@
 .todo-list-check:checked {
   background-color: #000;
 }
+
+.todo-completed {
+  cursor: pointer;
+}
+
+.todo-completed:hover {
+  color: #fff;
+}

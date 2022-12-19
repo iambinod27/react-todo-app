@@ -39,6 +39,12 @@ export const TodoProvider = ({ children }) => {
     });
   };
 
+  const clearCompleted = () => {
+    dispatch({
+      type: "CLEAR_COMPLETED",
+    });
+  };
+
   const value = {
     state,
     handleSubmit,
@@ -46,6 +52,7 @@ export const TodoProvider = ({ children }) => {
     setTodo,
     removeTodo,
     checkItem,
+    clearCompleted,
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
