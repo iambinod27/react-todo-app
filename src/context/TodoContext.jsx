@@ -27,7 +27,21 @@ export const TodoProvider = ({ children }) => {
     });
   };
 
-  const value = { state, handleSubmit, todo, setTodo, removeTodo };
+  // const checkItem = (id) => {
+  //   dispatch({
+  //     type: "CHECK_ITEM",
+  //     id,
+  //     complete: check,
+  //   });
+  // };
+
+  const value = {
+    state,
+    handleSubmit,
+    todo,
+    setTodo,
+    removeTodo,
+  };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };
