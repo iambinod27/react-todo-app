@@ -3,7 +3,7 @@ import remove from "../assets/close.png";
 import { TodoContext } from "../context/TodoContext";
 
 const TodoList = () => {
-  const { state, removeTodo } = useContext(TodoContext);
+  const { state, removeTodo, checkItem } = useContext(TodoContext);
 
   return (
     <>
@@ -11,7 +11,13 @@ const TodoList = () => {
         return (
           <div className="todo-list" key={item.id}>
             <div className="todo-info">
-              <input type="checkbox" className="todo-list-check" />
+              <input
+                type="checkbox"
+                className="todo-list-check"
+                checked={item.complete}
+                value={item.complete}
+                onChange={() => checkItem(item.id)}
+              />
               <p>{item.task}</p>
             </div>
             <img

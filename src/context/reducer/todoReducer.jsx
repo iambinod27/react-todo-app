@@ -1,4 +1,7 @@
-export const initialState = [];
+export const initialState =
+  localStorage.getItem("todos") == null
+    ? []
+    : JSON.parse(localStorage.getItem("todos"));
 
 export const todoReducers = (state, action) => {
   switch (action.type) {
@@ -11,6 +14,18 @@ export const todoReducers = (state, action) => {
 
     case "REMOVE_TODO":
       return state.filter((item) => item.id !== action.id);
+
+    case "CHECK_ITEM":
+      return state.map((item) => {
+        if (item.id == action.id) {
+          return {
+            ...item,
+            complete: !item.complete,
+          };
+        }
+
+        return item;
+      });
 
     default:
       return state;

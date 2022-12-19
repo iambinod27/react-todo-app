@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import { initialState, todoReducers } from "./reducer/todoReducer";
 import { v4 as uuid } from "uuid";
 
@@ -7,6 +7,11 @@ export const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducers, initialState);
   const [todo, setTodo] = useState("");
+  console.log(state);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(state));
+  }, [state]);
 
   const handleSubmit = (e) => {
     if (todo) {
@@ -27,13 +32,12 @@ export const TodoProvider = ({ children }) => {
     });
   };
 
-  // const checkItem = (id) => {
-  //   dispatch({
-  //     type: "CHECK_ITEM",
-  //     id,
-  //     complete: check,
-  //   });
-  // };
+  const checkItem = (id) => {
+    dispatch({
+      type: "CHECK_ITEM",
+      id,
+    });
+  };
 
   const value = {
     state,
@@ -41,6 +45,7 @@ export const TodoProvider = ({ children }) => {
     todo,
     setTodo,
     removeTodo,
+    checkItem,
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
